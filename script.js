@@ -11,8 +11,32 @@ function playGame(playerChoice) {
   // Get the computer's choice
   const computerChoice = getComputerChoice();
   
-  // Display both choices on the page
-  resultDiv.innerHTML = `You chose: ${playerChoice}<br>Computer chose: ${computerChoice}`;
+  // Compare choices and determine the winner
+  let gameResult = "";
+  
+  // Check if it's a tie
+  if (playerChoice === computerChoice) {
+    gameResult = "It's a tie! 🤝";
+  }
+  // Check if player wins with Rock
+  else if (playerChoice === "Rock 🪨" && computerChoice === "Scissors ✂️") {
+    gameResult = "You win! 🎉 Rock crushes Scissors!";
+  }
+  // Check if player wins with Paper
+  else if (playerChoice === "Paper 📄" && computerChoice === "Rock 🪨") {
+    gameResult = "You win! 🎉 Paper covers Rock!";
+  }
+  // Check if player wins with Scissors
+  else if (playerChoice === "Scissors ✂️" && computerChoice === "Paper 📄") {
+    gameResult = "You win! 🎉 Scissors cuts Paper!";
+  }
+  // If none of the above, computer wins
+  else {
+    gameResult = "Computer wins! 😔 Try again!";
+  }
+  
+  // Display both choices and the result on the page
+  resultDiv.innerHTML = `You chose: ${playerChoice}<br>Computer chose: ${computerChoice}<br><br>${gameResult}`;
 }
 
 // Add event listener for rock button
